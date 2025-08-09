@@ -1,141 +1,189 @@
 import {
-  Appwrite,
-  Astro,
-  BunJs,
+  Bootstrap5,
+  ClaudeAI,
+  Cypress,
   Docker,
-  Figma,
-  Framer,
+  ESLint,
   Git,
-  MongoDB,
-  NextJs,
-  NodeJs,
-  Python,
+  GitHubCopilot,
+  GitHubDark,
+  I18next,
+  JavaScript,
+  NPM,
+  Pinia,
+  PnpmDark,
+  Prettier,
   React,
   ReactQuery,
-  Redis,
-  Redux,
+  ReactRouter,
+  Sass,
   ShadcnUI,
+  Stylelint,
   TailwindCSS,
   TypeScript,
+  ViteJS,
+  Vitest,
+  VueJs,
+  Zod,
 } from 'developer-icons';
 
-import FastapiIcon from '@/components/ui/icons/fastapi.astro';
-import HonoIcon from '@/components/ui/icons/hono.astro';
+import Zustand from '@/components/ui/icons/zustand.astro';
 
-export const TECH_STACK = [
-  // Programming Languages
+export const TECH_STACK_GROUPS = [
   {
-    title: 'TypeScript',
-    href: 'https://www.typescriptlang.org/',
-    icon: TypeScript,
+    group: 'Languages & Frameworks',
+    items: [
+      {
+        title: 'JavaScript',
+        icon: JavaScript,
+      },
+      {
+        title: 'TypeScript',
+        icon: TypeScript,
+      },
+      {
+        title: 'React',
+        icon: React,
+      },
+      {
+        title: 'Vue 3',
+        icon: VueJs,
+      },
+    ],
   },
   {
-    title: 'Python',
-    href: 'https://www.python.org/',
-    icon: Python,
-  },
-
-  // Frontend Technologies
-  {
-    title: 'React',
-    href: 'https://react.dev/',
-    icon: React,
-  },
-  {
-    title: 'Next.js',
-    href: 'https://nextjs.org/',
-    icon: NextJs,
-  },
-  {
-    title: 'Astro.js',
-    href: 'https://astro.build/',
-    icon: Astro,
-  },
-  {
-    title: 'Tailwind CSS',
-    href: 'https://tailwindcss.com/',
-    icon: TailwindCSS,
-  },
-  {
-    title: 'Redux',
-    href: 'https://redux.js.org/',
-    icon: Redux,
-  },
-  {
-    title: 'Zustand',
-    href: 'https://zustand-demo.pmnd.rs/',
-  },
-  {
-    title: 'React Query',
-    href: 'https://tanstack.com/query/latest',
-    icon: ReactQuery,
+    group: 'Libraries',
+    items: [
+      {
+        title: 'Zustand',
+        icon: Zustand,
+      },
+      {
+        title: 'React Router',
+        icon: ReactRouter,
+      },
+      {
+        title: 'TanStack Router',
+        icon: '/tanstack.webp',
+      },
+      {
+        title: 'TanStack Query',
+        icon: ReactQuery,
+      },
+      {
+        title: 'Pinia',
+        icon: Pinia,
+      },
+      {
+        title: 'Vue Router',
+        icon: VueJs,
+      },
+      {
+        title: 'Zod',
+        icon: Zod,
+      },
+      {
+        title: 'i18n',
+        icon: I18next,
+      },
+    ],
   },
   {
-    title: 'shadcn/ui',
-    href: 'https://ui.shadcn.com/',
-    icon: ShadcnUI,
+    group: 'Styling',
+    items: [
+      {
+        title: 'Tailwind CSS',
+        icon: TailwindCSS,
+      },
+      {
+        title: 'Bootstrap 5',
+        icon: Bootstrap5,
+      },
+      {
+        title: 'SASS',
+        icon: Sass,
+      },
+      {
+        title: 'Shadcn UI',
+        icon: ShadcnUI,
+      },
+    ],
   },
   {
-    title: 'Motion',
-    href: 'https://motion.dev/',
-    icon: Framer,
-  },
-
-  // Backend Technologies
-  {
-    title: 'Node.js',
-    href: 'https://nodejs.org/',
-    icon: NodeJs,
-  },
-  {
-    title: 'Bun',
-    href: 'https://bun.sh/',
-    icon: BunJs,
-  },
-  {
-    title: 'FastAPI',
-    href: 'https://fastapi.tiangolo.com/',
-    icon: FastapiIcon,
+    group: 'Tools & Utilities',
+    items: [
+      {
+        title: 'ESLint',
+        icon: ESLint,
+      },
+      {
+        title: 'Stylelint',
+        icon: Stylelint,
+      },
+      {
+        title: 'Prettier',
+        icon: Prettier,
+      },
+    ],
   },
   {
-    title: 'Honojs',
-    href: 'https://hono.dev/',
-    icon: HonoIcon,
+    group: 'Version Control & CI/CD',
+    items: [
+      {
+        title: 'Git',
+        icon: Git,
+      },
+      {
+        title: 'GitHub Actions',
+        icon: GitHubDark,
+      },
+      {
+        title: 'Docker',
+        icon: Docker,
+      },
+    ],
   },
   {
-    title: 'Appwrite',
-    href: 'https://appwrite.io',
-    icon: Appwrite,
-  },
-
-  // Databases & Caching
-  {
-    title: 'MongoDB',
-    href: 'https://www.mongodb.com/',
-    icon: MongoDB,
-  },
-  {
-    title: 'Redis',
-    href: 'https://redis.io/',
-    icon: Redis,
-  },
-
-  // DevOps & Development Tools
-  {
-    title: 'Docker',
-    href: 'https://www.docker.com/',
-    icon: Docker,
+    group: 'Testing & Development Tools',
+    items: [
+      {
+        title: 'Vite',
+        icon: ViteJS,
+      },
+      {
+        title: 'Vitest',
+        icon: Vitest,
+      },
+      {
+        title: 'Cypress',
+        icon: Cypress,
+      },
+    ],
   },
   {
-    title: 'Git',
-    href: 'https://git-scm.com/',
-    icon: Git,
+    group: 'Package Managers',
+    items: [
+      {
+        title: 'PNPM',
+        icon: PnpmDark,
+      },
+      {
+        title: 'NPM',
+        icon: NPM,
+      },
+    ],
   },
-
-  // Miscellaneous
   {
-    title: 'Figma',
-    href: 'https://www.figma.com/',
-    icon: Figma,
+    group: 'AI Tools',
+    items: [
+      {
+        title: 'Claude Code',
+        icon: ClaudeAI,
+      },
+      {
+        title: 'GitHub Copilot',
+        icon: GitHubCopilot,
+      },
+    ],
   },
 ];

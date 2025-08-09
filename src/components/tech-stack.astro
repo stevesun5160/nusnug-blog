@@ -1,9 +1,11 @@
 ---
+import { ChevronDown } from 'lucide-react';
+
 import BoxContent from '@/components/box/content.astro';
 import BoxHeader from '@/components/box/header.astro';
 import Box from '@/components/box/index.astro';
 import BoxTitle from '@/components/box/title.astro';
-import { TECH_STACK } from '@/lib/constants/tech-stack';
+import { TECH_STACK_GROUPS } from '@/lib/constants/tech-stack';
 ---
 
 <Box>
@@ -11,28 +13,38 @@ import { TECH_STACK } from '@/lib/constants/tech-stack';
     <BoxTitle>Tech Stack</BoxTitle>
   </BoxHeader>
   <BoxContent>
-    <div
-      class="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-3"
-      style="content-visibility: auto; contain-intrinsic-size: auto 48px;"
-    >
+    <div class="grid" style="content-visibility: auto; contain-intrinsic-size: auto 48px;">
       {
-        TECH_STACK.map((item) => (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class:list={[
-              'flex h-10 min-w-[120px] items-center justify-center gap-2 rounded-md border border-solid bg-blue-50/10 p-2',
-              'transition-all duration-200 hover:bg-blue-50/20',
-            ]}
-          >
-            {item.icon && (
-              <span class="flex size-5 items-center justify-center">
-                <item.icon className="size-5" />
-              </span>
-            )}
-            <span class="truncate text-sm">{item.title}</span>
-          </a>
+        TECH_STACK_GROUPS.map((group) => (
+          <div class="py-3.5 [&:not(:last-child)]:screen-line-after">
+            <h3 class="mb-2 flex items-center gap-x-2 text-base font-semibold">
+              <ChevronDown className="size-4" />
+              {group.group}
+            </h3>
+            <ul class="grid grid-cols-[repeat(auto-fill,minmax(136px,1fr))] gap-3">
+              {group.items.map((item) => {
+                return (
+                  <lis
+                    class:list={[
+                      'flex h-10 w-full min-w-[136px] items-center justify-center gap-2 rounded-md border border-solid bg-blue-50/10 p-2',
+                      'cursor-default transition-all duration-200 hover:bg-blue-50/20',
+                    ]}
+                  >
+                    {item.icon && (
+                      <span class="flex items-center justify-center">
+                        {typeof item.icon === 'string' ? (
+                          <img src={item.icon} alt={item.title} class="size-5" />
+                        ) : (
+                          <item.icon className="size-5" />
+                        )}
+                      </span>
+                    )}
+                    <span class="truncate text-sm">{item.title}</span>
+                  </lis>
+                );
+              })}
+            </ul>
+          </div>
         ))
       }
     </div>
