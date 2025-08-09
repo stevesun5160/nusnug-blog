@@ -1,0 +1,26 @@
+---
+import Footer from '@/components/footer.astro';
+import Navbar from '@/components/navbar/index.astro';
+import Profile from '@/components/profile.astro';
+import Experience from '@/components/sections/experience/experience.astro';
+import TechStack from '@/components/tech-stack.astro';
+import Pattern from '@/components/ui/pattern.astro';
+import Layout from '@/layouts/layout.astro';
+---
+
+<Layout title="Louai Boumediene">
+  <Navbar />
+
+  <main aria-label="Main content" class="mx-auto min-h-[calc(100vh-120px)] max-w-4xl">
+    <Pattern className="h-14" />
+    <Profile />
+    <Pattern />
+    <Pattern />
+    <TechStack />
+    <Pattern />
+    <Experience />
+    <Pattern />
+  </main>
+
+  <Footer />
+</Layout>
