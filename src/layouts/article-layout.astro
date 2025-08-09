@@ -82,40 +82,6 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    function createProgressBar() {
-      const progressContainer = document.createElement('div');
-      progressContainer.className = 'fixed duration-75 top-0 z-10 h-1 w-full bg-background';
-
-      const progressBar = document.createElement('div');
-      progressBar.className = 'h-1 w-0 bg-blue-500';
-      progressBar.id = 'myBar';
-
-      progressContainer.appendChild(progressBar);
-
-      document.body.appendChild(progressContainer);
-    }
-    createProgressBar();
-
-    /**
-     * Update the progress bar when user scrolls
-     */
-    function updateScrollProgress() {
-      document.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height =
-          document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = Math.ceil((winScroll / height) * 100);
-
-        if (document) {
-          const myBar = document.getElementById('myBar');
-          if (myBar) {
-            myBar.style.width = `${scrolled}%`;
-          }
-        }
-      });
-    }
-    updateScrollProgress();
-
     /**
      * Add copy button to code snippets in markdown
      */

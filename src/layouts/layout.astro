@@ -5,15 +5,8 @@ import { ClientRouter } from 'astro:transitions';
 import BackToTop from '@/components/back-to-top.astro';
 import { SITE } from '@/lib/config';
 
-import '@fontsource/geist-sans';
-import '@fontsource/geist-sans/500.css';
-import '@fontsource/geist-sans/600.css';
-import '@fontsource/geist-sans/700.css';
-import '@fontsource/geist-sans/800.css';
-import '@fontsource/geist-sans/900.css';
-import '@fontsource/roboto-condensed/600.css';
-import '@fontsource/roboto-condensed/400.css';
-import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/noto-sans-tc';
+import '@fontsource/maple-mono';
 import '@/styles/global.css';
 
 export type Props = {
@@ -24,7 +17,7 @@ export type Props = {
   ogImage?: string;
   pageType?: string;
   canonicalURL?: string;
-}
+};
 
 const {
   title = SITE.title,

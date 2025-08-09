@@ -1,7 +1,7 @@
 export const PROFILE_INFO = {
-  role: 'Frontend Developer @Taiwan',
-  logo: 'Nusnug IO',
-  slogan: 'Coding, Diving, Coffee...',
-  displayName: 'Nusnug Sun',
+  role: 'Frontend Developer in ProTech / AdTech',
+  logo: 'Nusnug I/O',
+  slogan: 'Coding, Coffee, Diving...',
+  displayName: 'Nusnug',
   email: 'stevesun5160@gmail.com',
 } as const;
