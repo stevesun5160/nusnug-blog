@@ -10,5 +10,10 @@ export default defineConfig({
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
+  }, 
+  markdown: {
+    shikiConfig: {
+      theme: 'catppuccin-macchiato',
+    },
   },
 });

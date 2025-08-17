@@ -48,10 +48,13 @@
   ],
   "css.lint.unknownAtRules": "ignore",
   "cSpell.words": [
+    "catppuccin",
     "lucide",
+    "macchiato",
     "mdast",
     "noto",
     "nusnug",
-    "Shadcn"
+    "Shadcn",
+    "shiki"
   ]
 }
