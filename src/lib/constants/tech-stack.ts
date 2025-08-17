@@ -31,7 +31,7 @@ import Zustand from '@/components/ui/icons/zustand.astro';
 
 export const TECH_STACK_GROUPS = [
   {
-    group: 'Languages & Frameworks',
+    group: '前端技術',
     items: [
       {
         title: 'JavaScript',
@@ -52,11 +52,15 @@ export const TECH_STACK_GROUPS = [
     ],
   },
   {
-    group: 'Libraries',
+    group: '狀態管理＆路由',
     items: [
       {
         title: 'Zustand',
         icon: Zustand,
+      },
+      {
+        title: 'Pinia',
+        icon: Pinia,
       },
       {
         title: 'React Router',
@@ -69,10 +73,6 @@ export const TECH_STACK_GROUPS = [
       {
         title: 'TanStack Query',
         icon: ReactQuery,
-      },
-      {
-        title: 'Pinia',
-        icon: Pinia,
       },
       {
         title: 'Vue Router',
@@ -89,7 +89,7 @@ export const TECH_STACK_GROUPS = [
     ],
   },
   {
-    group: 'Styling',
+    group: 'CSS 框架',
     items: [
       {
         title: 'Tailwind CSS',
@@ -110,41 +110,7 @@ export const TECH_STACK_GROUPS = [
     ],
   },
   {
-    group: 'Tools & Utilities',
-    items: [
-      {
-        title: 'ESLint',
-        icon: ESLint,
-      },
-      {
-        title: 'Stylelint',
-        icon: Stylelint,
-      },
-      {
-        title: 'Prettier',
-        icon: Prettier,
-      },
-    ],
-  },
-  {
-    group: 'Version Control & CI/CD',
-    items: [
-      {
-        title: 'Git',
-        icon: Git,
-      },
-      {
-        title: 'GitHub Actions',
-        icon: GitHubDark,
-      },
-      {
-        title: 'Docker',
-        icon: Docker,
-      },
-    ],
-  },
-  {
-    group: 'Testing & Development Tools',
+    group: '開發工具',
     items: [
       {
         title: 'Vite',
@@ -158,11 +124,30 @@ export const TECH_STACK_GROUPS = [
         title: 'Cypress',
         icon: Cypress,
       },
-    ],
-  },
-  {
-    group: 'Package Managers',
-    items: [
+      {
+        title: 'ESLint',
+        icon: ESLint,
+      },
+      {
+        title: 'Stylelint',
+        icon: Stylelint,
+      },
+      {
+        title: 'Prettier',
+        icon: Prettier,
+      },
+      {
+        title: 'Git',
+        icon: Git,
+      },
+      {
+        title: 'GitHub Actions',
+        icon: GitHubDark,
+      },
+      {
+        title: 'Docker',
+        icon: Docker,
+      },
       {
         title: 'PNPM',
         icon: PnpmDark,
@@ -174,7 +159,7 @@ export const TECH_STACK_GROUPS = [
     ],
   },
   {
-    group: 'AI Tools',
+    group: 'AI 開發工具',
     items: [
       {
         title: 'Claude Code',

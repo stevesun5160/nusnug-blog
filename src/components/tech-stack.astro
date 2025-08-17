@@ -10,7 +10,7 @@ import { TECH_STACK_GROUPS } from '@/lib/constants/tech-stack';
 
 <Box>
   <BoxHeader>
-    <BoxTitle>Tech Stack</BoxTitle>
+    <BoxTitle>使用技術</BoxTitle>
   </BoxHeader>
   <BoxContent>
     <div class="grid" style="content-visibility: auto; contain-intrinsic-size: auto 48px;">
@@ -21,17 +21,17 @@ import { TECH_STACK_GROUPS } from '@/lib/constants/tech-stack';
               <ChevronDown className="size-4" />
               {group.group}
             </h3>
-            <ul class="grid grid-cols-[repeat(auto-fill,minmax(136px,1fr))] gap-3">
+            <ul class="flex flex-wrap gap-3">
               {group.items.map((item) => {
                 return (
-                  <lis
+                  <li
                     class:list={[
-                      'flex h-10 w-full min-w-[136px] items-center justify-center gap-2 rounded-md border border-solid bg-blue-50/10 p-2',
+                      'flex min-h-[2.5rem] items-center justify-center gap-2 rounded-md border border-solid bg-blue-50/10 px-3 py-2',
                       'cursor-default transition-all duration-200 hover:bg-blue-50/20',
                     ]}
                   >
                     {item.icon && (
-                      <span class="flex items-center justify-center">
+                      <span class="flex shrink-0 items-center justify-center">
                         {typeof item.icon === 'string' ? (
                           <img src={item.icon} alt={item.title} class="size-5" />
                         ) : (
@@ -39,8 +39,8 @@ import { TECH_STACK_GROUPS } from '@/lib/constants/tech-stack';
                         )}
                       </span>
                     )}
-                    <span class="truncate text-sm">{item.title}</span>
-                  </lis>
+                    <span class="text-sm whitespace-nowrap">{item.title}</span>
+                  </li>
                 );
               })}
             </ul>
