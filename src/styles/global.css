@@ -26,6 +26,7 @@
   --color-popover-foreground: hsl(var(--popover-foreground));
   --color-hover: hsl(var(--ring));
   --color-radius: var(--radius);
+  --color-card-background: hsl(var(--card-background));
 
   /* Chart Colors */
   --color-chart-1: hsl(var(--chart-1));
@@ -59,9 +60,9 @@
 }
 
 :root {
-  --background: 0 0% 100%;
+  --background: 32 33 90%;
   --foreground: 0 0 26%;
-  --card: 0 0% 100%;
+  --card: 34 33 96%;
   --card-foreground: 0 0 26%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0 26%;
@@ -165,4 +166,8 @@ pre {
 
 .copy-code svg {
   @apply size-4;
+}
+
+p code {
+  @apply mx-0.5 bg-card px-1.5;
 }

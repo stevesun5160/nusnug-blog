@@ -83,7 +83,7 @@ export const TECH_STACK_GROUPS = [
         icon: Zod,
       },
       {
-        title: 'i18n',
+        title: 'i18n-next',
         icon: I18next,
       },
     ],
