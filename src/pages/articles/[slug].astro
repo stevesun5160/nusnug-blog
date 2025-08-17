@@ -8,7 +8,7 @@ import { getReadingTime } from '@/lib/utils';
 
 export type Props = {
   post: CollectionEntry<'blog'>;
-}
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
