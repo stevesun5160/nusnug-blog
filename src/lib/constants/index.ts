@@ -11,10 +11,6 @@ export const NAV_LINKS = [
     label: 'Articles',
     href: '/articles',
   },
-  {
-    label: 'Projects',
-    href: '/projects',
-  },
 ] as const;
 
 export const SOCIAL_LINKS = [
