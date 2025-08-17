@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+
+import ArticleItem from '@/components/article-item.astro';
+import BoxContent from '@/components/box/content.astro';
+import BoxHeader from '@/components/box/header.astro';
+import Box from '@/components/box/index.astro';
+import BoxTitle from '@/components/box/title.astro';
+
+// 取得最新 5 篇文章
+const allArticles = await getCollection('blog', ({ data }) => !data.draft);
+const latestArticles = allArticles
+  .sort((a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime())
+  .slice(0, 5);
+---
+
+<Box>
+  <BoxHeader>
+    <BoxTitle>最新文章</BoxTitle>
+  </BoxHeader>
+  <BoxContent className="px-0">
+    <div class="flex w-full flex-col items-start justify-start divide-y divide-border">
+      {latestArticles.map((article) => <ArticleItem article={article} />)}
+    </div>
+  </BoxContent>
+</Box>
