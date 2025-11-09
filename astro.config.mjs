@@ -1,15 +1,21 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
-// @ts-check
 import { defineConfig } from "astro/config";
+import Icons from 'unplugin-icons/vite'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://louai.site',
   integrations: [react(), mdx()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      Icons({
+        compiler: 'astro',
+        autoInstall: true
+      })
+    ],
   }, 
   markdown: {
     shikiConfig: {

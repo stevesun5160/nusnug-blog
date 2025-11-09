@@ -1,5 +1,5 @@
 ---
-import { ChevronUp } from 'lucide-react';
+import IconChevronUp from '~icons/lucide/chevron-up';
 
 import { buttonVariants, cn } from '@/lib/utils';
 ---
@@ -57,8 +57,8 @@ import { buttonVariants, cn } from '@/lib/utils';
   title="Back to Top Button"
   class={cn(
     buttonVariants({ size: 'icon' }),
-    'fixed right-4 bottom-[4rem] z-50 scale-0 cursor-pointer rounded-full transition-transform duration-150 lg:left-[calc(100vw/2+400px)]',
+    'fixed right-4 bottom-16 z-50 scale-0 cursor-pointer rounded-full border-[#eee] bg-white text-primary shadow-xl transition-transform duration-150 hover:scale-105 hover:bg-white lg:left-[calc(100vw/2+400px)]',
   )}
 >
-  <ChevronUp />
+  <IconChevronUp />
 </button>

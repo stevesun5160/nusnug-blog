@@ -55,6 +55,7 @@
     "noto",
     "nusnug",
     "Shadcn",
-    "shiki"
+    "shiki",
+    "unplugin"
   ]
 }

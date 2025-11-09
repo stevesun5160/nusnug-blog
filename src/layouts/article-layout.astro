@@ -1,7 +1,7 @@
 ---
 import type { MarkdownHeading } from 'astro';
 
-import { ArrowLeft } from 'lucide-react';
+import IconArrowLeft from '~icons/lucide/arrow-left';
 
 import BoxContent from '@/components/box/content.astro';
 import BoxHeader from '@/components/box/header.astro';
@@ -27,13 +27,11 @@ type Props = {
 
 const { title, readTime, description, date, headings, image } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('en-GB', {
+const formattedDate = new Intl.DateTimeFormat('zh-TW', {
   day: '2-digit',
   month: '2-digit',
   year: 'numeric',
-})
-  .format(date)
-  .replace(/\//g, '.');
+}).format(date);
 ---
 
 <Layout title={`${title}`} ogImage={image} description={description}>
@@ -43,19 +41,19 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
     <div class="mx-auto max-w-4xl">
       <Pattern className="h-14">
         <LinkBtn ariaLabel="Back link" className="absolute bottom-0 left-2 z-1" href="/articles">
-          <ArrowLeft />
+          <IconArrowLeft />
         </LinkBtn>
       </Pattern>
 
       <Box>
-        <BoxHeader class="text-sm !font-medium text-muted-foreground">
+        <BoxHeader class="text-sm font-medium! text-muted-foreground">
           {formattedDate} • {readTime}
         </BoxHeader>
 
         <Pattern className="screen-line-after" />
 
         <BoxHeader>
-          <BoxTitle className="text-2xl !font-black md:text-3xl"
+          <BoxTitle className="text-2xl font-black! md:text-3xl"
             >{capitalizeFirstLetter(title)}</BoxTitle
           >
         </BoxHeader>

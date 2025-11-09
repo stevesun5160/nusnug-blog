@@ -1,6 +1,5 @@
 import GithubIcon from '@/components/ui/icons/github.astro';
 import LinkedinIcon from '@/components/ui/icons/linkedin.astro';
-import XIcon from '@/components/ui/icons/x.astro';
 
 export const NAV_LINKS = [
   {
@@ -23,10 +22,5 @@ export const SOCIAL_LINKS = [
     name: 'Linkedin',
     icon: LinkedinIcon,
     url: 'https://www.linkedin.com/in/louai-boumediene-018919262/',
-  },
-  {
-    name: 'X',
-    icon: XIcon,
-    url: 'https://x.com/Louai_Dourov',
   },
 ];

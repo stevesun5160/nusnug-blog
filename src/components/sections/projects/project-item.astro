@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-import { ChevronRightIcon, FolderCodeIcon } from 'lucide-react';
+import IconChevronRight from '~icons/lucide/chevron-right';
+import IconFolderCode from '~icons/lucide/folder-code';
 
 import Badge from '@/components/ui/badge.astro';
 import MarkdownRenderer from '@/components/ui/markdown-renderer.astro';
@@ -14,7 +15,7 @@ const { project } = Astro.props;
 ---
 
 <a href={`/projects/${project.id}`} class="flex cursor-pointer items-center not-last:border-b">
-  <FolderCodeIcon className="mx-4.5 size-5 shrink-0 text-muted-foreground" />
+  <IconFolderCode className="mx-4.5 size-5 shrink-0 text-muted-foreground" />
 
   <div class="group flex w-full cursor-pointer flex-col gap-y-3 border-l p-4">
     <div class="flex w-full items-center justify-between text-left select-none">
@@ -22,7 +23,7 @@ const { project } = Astro.props;
         {project.data.name}
       </h3>
 
-      <ChevronRightIcon
+      <IconChevronRight
         className="size-4 shrink-0 text-muted-foreground transition-transform duration-150 group-hover:translate-x-1"
       />
     </div>

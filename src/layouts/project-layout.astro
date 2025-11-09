@@ -1,5 +1,6 @@
 ---
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import IconArrowLeft from '~icons/lucide/arrow-left';
+import IconExternalLink from '~icons/lucide/external-link';
 
 import BoxContent from '@/components/box/content.astro';
 import BoxHeader from '@/components/box/header.astro';
@@ -34,7 +35,7 @@ const { title, technologies, description, preview, sourceCode, image } = Astro.p
     <Pattern className="h-14">
       <div class="z-1 mx-2 mt-auto flex w-full items-center justify-between">
         <LinkBtn ariaLabel="Back btn" href="/projects">
-          <ArrowLeft />
+          <IconArrowLeft />
         </LinkBtn>
         <div>
           {
@@ -62,7 +63,7 @@ const { title, technologies, description, preview, sourceCode, image } = Astro.p
                 href={preview}
               >
                 Preview
-                <ExternalLink className="size-3" />
+                <IconExternalLink className="size-3" />
               </LinkBtn>
             )
           }
@@ -72,7 +73,7 @@ const { title, technologies, description, preview, sourceCode, image } = Astro.p
 
     <Box>
       <BoxHeader>
-        <BoxTitle className="text-2xl !font-black md:text-3xl"
+        <BoxTitle className="text-2xl font-black! md:text-3xl"
           >{capitalizeFirstLetter(title)}</BoxTitle
         >
       </BoxHeader>
