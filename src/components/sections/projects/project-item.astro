@@ -19,7 +19,7 @@ const { project } = Astro.props;
 
   <div class="group flex w-full cursor-pointer flex-col gap-y-3 border-l p-4">
     <div class="flex w-full items-center justify-between text-left select-none">
-      <h3 class="text-lg font-semibold underline-offset-6 group-hover:underline">
+      <h3 class="text-lg font-bold underline-offset-6 group-hover:underline">
         {project.data.name}
       </h3>
 
@@ -29,7 +29,7 @@ const { project } = Astro.props;
     </div>
 
     <MarkdownRenderer
-      className="text-xs leading-5 font-medium md:text-sm"
+      className="text-xs leading-5 font-bold md:text-sm"
       content={project.data.description}
     />
 

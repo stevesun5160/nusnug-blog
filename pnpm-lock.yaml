@@ -14,19 +14,13 @@ importers:
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@24.10.0)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(yaml@2.8.1)
-      '@fontsource/geist-sans':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/jetbrains-mono':
+      '@fontsource/lxgw-wenkai-tc':
         specifier: ^5.2.8
         version: 5.2.8
       '@fontsource/maple-mono':
         specifier: ^5.2.6
         version: 5.2.6
       '@fontsource/noto-sans-tc':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/roboto-condensed':
         specifier: ^5.2.8
         version: 5.2.8
       '@tailwindcss/typography':
@@ -591,20 +585,14 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource/geist-sans@5.2.5':
-    resolution: {integrity: sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A==}
-
-  '@fontsource/jetbrains-mono@5.2.8':
-    resolution: {integrity: sha512-6w8/SG4kqvIMu7xd7wt6x3idn1Qux3p9N62s6G3rfldOUYHpWcc2FKrqf+Vo44jRvqWj2oAtTHrZXEP23oSKwQ==}
+  '@fontsource/lxgw-wenkai-tc@5.2.8':
+    resolution: {integrity: sha512-bbzfwZx5Ifc635MViFDfH6h//SgR0ylnhKSV487roGxWU2W4ue2KtygrGYMg40TSJ3GEZ5LdEheq1ABmSSjKfQ==}
 
   '@fontsource/maple-mono@5.2.6':
     resolution: {integrity: sha512-+VAD7z8nyTkaiz2/Ww639Z5Kp/YJIL4dNMQxydqSMafNb5nKxFeoRq6W3g9WJ04IcBjdBmn0dKFNk90lyz7K+w==}
 
   '@fontsource/noto-sans-tc@5.2.8':
     resolution: {integrity: sha512-YGeoh/XCBJm9iSUuyDIpw0pd7I+XiO7HI3Tq+38j4fuIjykURHhUDRtjkIFkEzjg8BKZ6MNdyyXHXor1fdoGQg==}
-
-  '@fontsource/roboto-condensed@5.2.8':
-    resolution: {integrity: sha512-M2OxXXGJQeif+LhxHjWiCEX3BHIYeZf64CcUTeh9AQFGp7DXo2UAXZiZUUOalVdOiuUtQSIi2CDHLDWFiyoECQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4061,15 +4049,11 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@fontsource/geist-sans@5.2.5': {}
-
-  '@fontsource/jetbrains-mono@5.2.8': {}
+  '@fontsource/lxgw-wenkai-tc@5.2.8': {}
 
   '@fontsource/maple-mono@5.2.6': {}
 
   '@fontsource/noto-sans-tc@5.2.8': {}
-
-  '@fontsource/roboto-condensed@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 

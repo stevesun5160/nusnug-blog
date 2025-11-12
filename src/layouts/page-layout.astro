@@ -14,8 +14,8 @@ import { capitalizeFirstLetter } from '@/lib/utils';
 import Layout from './layout.astro';
 
 type Props = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   backLink?: string;
 };
 
@@ -35,14 +35,16 @@ const { title, description, backLink } = Astro.props;
       }
     </Pattern>
 
-    <Box>
-      <BoxHeader>
-        <BoxTitle className="text-2xl font-black!">{capitalizeFirstLetter(title)}</BoxTitle>
-      </BoxHeader>
-      <BoxContent>
-        {description}
-      </BoxContent>
-    </Box>
+    {
+      !!title && !!description && (
+        <Box>
+          <BoxHeader>
+            <BoxTitle className="text-2xl font-bold!">{capitalizeFirstLetter(title)}</BoxTitle>
+          </BoxHeader>
+          <BoxContent>{description}</BoxContent>
+        </Box>
+      )
+    }
 
     <slot />
   </main>

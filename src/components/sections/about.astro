@@ -9,9 +9,12 @@ import { PROFILE_INFO } from '@/lib/constants/profile';
 
 <Box>
   <BoxHeader>
-    <BoxTitle> About </BoxTitle>
+    <BoxTitle>About</BoxTitle>
   </BoxHeader>
   <BoxContent>
-    <MarkdownRenderer className="text-sm leading-7 font-medium" content={PROFILE_INFO.about} />
+    <MarkdownRenderer
+      className="text-sm leading-7 font-bold"
+      content={'about' in PROFILE_INFO ? (PROFILE_INFO.about as string) : ''}
+    />
   </BoxContent>
 </Box>

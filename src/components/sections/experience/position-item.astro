@@ -19,7 +19,7 @@ const { position } = Astro.props;
   <div class="block w-full text-left">
     <div class="relative z-1 mb-1 flex items-center space-x-3">
       <IconCodeXML className="size-4 bg-background" />
-      <h3 class="text-base font-black underline-offset-4">
+      <h3 class="text-base font-bold underline-offset-4">
         {position.title}
       </h3>
     </div>
@@ -44,7 +44,7 @@ const { position } = Astro.props;
     </div>
 
     <button
-      class="toggle-btn mt-2 ml-7 flex cursor-pointer items-center gap-1 rounded-md border px-4 py-2 text-xs font-medium text-primary hover:underline focus:outline-none"
+      class="toggle-btn mt-2 ml-7 flex cursor-pointer items-center gap-1 rounded-md border px-4 py-2 text-xs font-bold text-primary hover:underline focus:outline-none"
     >
       <span class="toggle-text">Show more</span>
       <IconChevronDown className="toggle-icon-down size-4" />

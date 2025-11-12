@@ -9,18 +9,18 @@ import BoxTitle from '@/components/box/title.astro';
 
 // 取得最新 5 篇文章
 const allArticles = await getCollection('blog', ({ data }) => !data.draft);
-const latestArticles = allArticles
+const latestFiveArticles = allArticles
   .sort((a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime())
   .slice(0, 5);
 ---
 
 <Box>
-  <BoxHeader>
-    <BoxTitle>最新文章</BoxTitle>
+  <BoxHeader class="pt-4 pb-0">
+    <BoxTitle>Latest Articles</BoxTitle>
   </BoxHeader>
-  <BoxContent className="p-4">
-    <div class="flex w-full flex-col items-start justify-start gap-y-2 divide-y divide-border">
-      {latestArticles.map((article) => <ArticleItem article={article} />)}
+  <BoxContent className="px-4 py-6">
+    <div class="flex w-full flex-col items-start justify-start gap-y-3 divide-y divide-border">
+      {latestFiveArticles.map((article) => <ArticleItem article={article} />)}
     </div>
   </BoxContent>
 </Box>

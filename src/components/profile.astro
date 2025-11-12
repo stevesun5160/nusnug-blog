@@ -8,84 +8,87 @@ import BoxContent from '@/components/box/content.astro';
 import Box from '@/components/box/index.astro';
 import Avatar from '@/components/ui/avatar.astro';
 import VerifiedIcon from '@/components/ui/icons/verified.astro';
+import Pattern from '@/components/ui/pattern.astro';
 import { PROFILE_INFO } from '@/lib/constants/profile';
 ---
 
-<div class="screen-line-after relative flex items-center p-4 md:border-x">
-  <div class="shrink-0">
-    <div class="relative z-1 mx-0.5 my-1">
-      <Avatar
-        className="size-20 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background sm:size-28"
-      />
-    </div>
-  </div>
-
-  <div class="flex flex-1 flex-col">
-    <div class="flex grow items-end pb-1 pl-4">
-      <div class="line-clamp-1 font-mono text-xs text-muted-foreground">
-        {PROFILE_INFO.slogan}
+<div class="md:flex md:items-center md:justify-between md:py-4">
+  <div class="screen-line-after relative flex items-center p-4 md:border-x md:py-0">
+    <div class="shrink-0">
+      <div class="relative z-1 mx-0.5 my-1">
+        <Avatar
+          className="size-20 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background sm:size-28"
+        />
       </div>
     </div>
 
-    <div class="">
-      <h1 class="flex items-center gap-x-2 pl-4 text-2xl font-black">
+    <div class="flex flex-1 flex-col gap-y-1.5 pl-4">
+      <p class="line-clamp-1 font-mono text-xs text-muted-foreground">
+        {PROFILE_INFO.slogan}
+      </p>
+
+      <h1 class="flex items-center gap-x-2 text-xl font-bold">
         {PROFILE_INFO.displayName}
         <VerifiedIcon class="size-4 text-blue-500" />
       </h1>
 
-      <div class="py-1 pl-4">
-        <p class="text-sm font-normal!">
-          {PROFILE_INFO.role}
-        </p>
-      </div>
+      <p class="text-sm font-normal!">
+        {PROFILE_INFO.role}
+      </p>
     </div>
   </div>
+
+  <Pattern className="h-8 md:hidden" />
+
+  <Box>
+    <BoxContent className="space-y-2 md:py-0">
+      <span class="flex items-center justify-start gap-1.5">
+        <IconBriefcaseBusiness className="size-4" />
+        Recently working at
+        <a
+          href="https://www.onead.com.tw/"
+          target="_blank"
+          class="font-bold underline underline-offset-4"
+        >
+          OneAD
+        </a>
+      </span>
+
+      <span class="flex items-center justify-start gap-1.5">
+        <IconCloudUpload className="size-4" />
+        Take a look at my
+        <a
+          href="https://drive.google.com/file/d/1c7-UIHy8GUvgj2XHuf7nfhUU4vpjRXSt/view?usp=sharing"
+          target="_blank"
+          class="font-bold underline underline-offset-4"
+        >
+          Resume
+        </a>
+      </span>
+
+      <span class="flex items-center justify-start gap-1.5">
+        <IconLinkedin className="size-4" />
+        Let's connect on
+        <a
+          href="https://www.linkedin.com/in/sksun-tw/"
+          class="font-bold underline underline-offset-4"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+      </span>
+
+      <span class="flex items-center justify-start gap-1.5">
+        <IconGithub className="size-4" />
+        Check out my repos on
+        <a
+          href="https://github.com/stevesun5160"
+          class="font-bold underline underline-offset-4"
+          target="_blank"
+        >
+          GitHub
+        </a>
+      </span>
+    </BoxContent>
+  </Box>
 </div>
-
-<Box>
-  <BoxContent className="space-y-3">
-    <span class="flex items-center justify-start gap-2">
-      <IconBriefcaseBusiness className="size-4" />
-      Recently working at
-      <a href="https://www.onead.com.tw/" target="_blank" class="underline underline-offset-4">
-        OneAD
-      </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <IconCloudUpload className="size-4" />
-      Take a look at my
-      <a
-        href="https://drive.google.com/file/d/1c7-UIHy8GUvgj2XHuf7nfhUU4vpjRXSt/view?usp=sharing"
-        target="_blank"
-        class="underline underline-offset-4"
-      >
-        Resume
-      </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <IconLinkedin className="size-4" />
-      Let's connect on
-      <a
-        href="https://www.linkedin.com/in/sksun-tw/"
-        class="underline underline-offset-4"
-        target="_blank"
-      >
-        LinkedIn
-      </a>
-    </span>
-
-    <span class="flex items-center justify-start gap-2">
-      <IconGithub className="size-4" />
-      Check out my repos on
-      <a
-        href="https://github.com/stevesun5160"
-        class="underline underline-offset-4"
-        target="_blank"
-      >
-        GitHub
-      </a>
-    </span>
-  </BoxContent>
-</Box>

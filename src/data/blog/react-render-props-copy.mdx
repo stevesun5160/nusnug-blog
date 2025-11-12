@@ -1,0 +1,324 @@
+---
+pubDatetime: 2025-08-17
+title: Tech Book Community 聚會心得 2025-07-19
+category: frontend
+series: backend-journey
+draft: false
+image: /og-images/articles/backend-essenials.jpg
+tags:
+  - react
+  - design patterns
+  - webdev
+description: A deep dive into backend engineering beyond frameworks, focusing on core concepts like communication protocols, databases, security, and scalability.
+---
+
+## 前言
+
+2025/07/19 參加了 Tech Book Community 的線下小聚，由 [Zet](http://tenlong.com.tw/products/9786263336841) 大大分享 `Render Props` 的概念。聽完後深感 Zet 大大不愧是暢銷書作者，將複雜的概念解釋得淺顯易懂，讓人受益良多。
+
+`Render Props` 的概念在一些 UI Library 中非常常見，像是我有接觸過的 `Ant Design` 或是 `shadcn/ui` 中都有類似的用法，只是在使用的當下並不知道這叫做 `Render Props`，直到參加這次小聚後才比較有具體的了解。
+
+## 什麼是 Render Props？
+
+在 Class Component 的年代，`Component` 是定義狀態的唯一載體，因此如果想要共用邏輯，通常可以透過 `HOC` (Higher Order Component) 或是 `Render Props` 來達成，到了 Hooks 時代，這些共用邏輯的方式大多被 `Custom Hooks` 取代。
+
+### HOC (Higher Order Component)
+
+`HOC` 是一個接受組件作為參數並返回新組件的**高階函數**。它透過包裝原始組件來注入共用邏輯，讓原始組件可以獲得額外的功能而不需要修改自身的程式碼。
+
+```tsx
+import React, { Component, type ComponentType } from 'react';
+
+type WithCounterProps = {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+};
+
+// withCounter HOC 實作
+function withCounter<P extends {}>(WrappedComponent: ComponentType<P & WithCounterProps>) {
+  return class extends Component<P, { count: number }> {
+    state = { count: 0 };
+
+    increment = () => this.setState((c) => ({ count: c.count + 1 }));
+    decrement = () => this.setState((c) => ({ count: c.count - 1 }));
+
+    render() {
+      return (
+        <WrappedComponent
+          {...this.props}
+          count={this.state.count}
+          increment={this.increment}
+          decrement={this.decrement}
+        />
+      );
+    }
+  };
+}
+
+// 原始組件
+type CounterDisplayProps = WithCounterProps & {
+  title: string;
+};
+
+class CounterDisplay extends Component<CounterDisplayProps> {
+  render() {
+    const { title, count, increment, decrement } = this.props;
+
+    return (
+      <div>
+        <h3>{title}</h3>
+        <p>計數: {count}</p>
+        <button onClick={increment}>+1</button>
+        <button onClick={decrement}>-1</button>
+      </div>
+    );
+  }
+}
+
+// 使用 HOC 創建增強組件
+const EnhancedCounter = withCounter(CounterDisplay);
+
+// 使用範例
+export default function App() {
+  return <EnhancedCounter title="我的計數器" />;
+}
+```
+
+這樣做的問題是，當有多個共用邏輯的時候，`props` 容易會有命名衝突，譬如 `aHOC` 和 `bHOC` 都有 `name` 這個 `props` 的時候，我們就不知道最後的 `name` 是來自哪裡。為了解決這樣的問題，`Render Props` 的概念便應運而生。
+
+### Render Props
+
+`Render Props` 是指組件接收一個函數作為 `prop`，這個函數會返回 `ReactNode` ，組件內部會呼叫這個函數並將內部狀態或邏輯作為參數傳遞給它。這種模式讓組件可以將自己的邏輯分享給其他組件，同時保持渲染的彈性。
+
+```tsx
+import React, { Component } from 'react';
+
+// Render Props 提供的參數類型
+type CounterRenderProps = {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+};
+
+// Count 組件的 props 類型
+type CountProps = {
+  initialValue: number;
+  children: (props: CounterRenderProps) => React.ReactNode;
+};
+
+// Count 組件的 state 類型
+type CountState = {
+  count: number;
+};
+
+// Render Props 組件實作
+class Count extends Component<CountProps, CountState> {
+  state: CountState = {
+    count: this.props.initialValue,
+  };
+
+  increment = () => this.setState((prev) => ({ count: prev.count + 1 }));
+  decrement = () => this.setState((prev) => ({ count: prev.count - 1 }));
+
+  render() {
+    return this.props.children({
+      count: this.state.count,
+      increment: this.increment,
+      decrement: this.decrement,
+    });
+  }
+}
+
+// 使用範例
+export default function App() {
+  return (
+    <div>
+      <Count initialValue={0}>
+        {({ count, increment, decrement }) => (
+          <div>
+            <h3>我的計數器</h3>
+            <button onClick={decrement}>-1</button>
+            <span style={{ margin: '0 10px' }}>計數: {count}</span>
+            <button onClick={increment}>+1</button>
+          </div>
+        )}
+      </Count>
+    </div>
+  );
+}
+```
+
+## Render Props Pattern 的深入分析
+
+### 核心概念與運作原理
+
+`Render Props` 的核心在於「控制反轉」(Inversion of Control) 的概念。提供邏輯的組件不直接決定如何渲染，而是將渲染控制權交給使用者，透過函數參數的方式傳遞資料和方法。
+
+### 與其他模式的比較
+
+| 特性         | HOC             | Render Props     | Custom Hooks           |
+| ------------ | --------------- | ---------------- | ---------------------- |
+| 學習門檻     | 較高            | 中等             | 較低                   |
+| 命名衝突     | 容易發生        | 不會發生         | 不會發生               |
+| 程式碼可讀性 | 較好            | 多層巢狀時較差   | 最好                   |
+| UI 控制彈性  | 較低            | **最高**         | 間接（需搭配其他方式） |
+| 邏輯測試     | 中等            | 中等             | 容易                   |
+| 適用時代     | Class Component | Class + Function | Function Component     |
+
+### 優點與限制
+
+#### 優點
+
+- **高度彈性**：使用者完全控制渲染邏輯
+- **邏輯解耦**：資料邏輯與 UI 呈現完全分離
+- **避免命名衝突**：參數可以任意重新命名
+- **組合性強**：可以輕鬆組合多種邏輯
+
+#### 限制
+
+- **巢狀地獄**：多層 `Render Props` 會降低可讀性
+- **效能考量**：容易產生不必要的重新渲染
+- **學習成本**：對新手來說概念較為抽象
+
+## Render Props 的實際應用場景
+
+在進入到 Hooks 時代後，雖然大部分共用邏輯的功能被 `Hooks` 取代，但 `Render Props` 在某些情境下還是非常好用。
+
+### 狀態提升 (Lifting State Up)
+
+當子組件需要將內部狀態暴露給父組件使用時，`Render Props` 提供了一個優雅的解決方案。與 Vue 中的 `Scoped Slots` 類似，這種模式讓父組件可以獲取子組件的狀態並決定如何渲染。
+
+```tsx
+import { useState, type ReactNode } from 'react';
+
+function Counter({ children }: { children: (props: { count: number }) => ReactNode }) {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setCount((c) => c - 1)}>-</button>
+      {children({ count })}
+      <button onClick={() => setCount((c) => c + 1)}>+</button>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Counter>
+      {({ count }) =>
+        count % 2 !== 0 ? <span style={{ color: 'red' }}>{count}</span> : <span>{count}</span>
+      }
+    </Counter>
+  );
+}
+```
+
+### 動態渲染邏輯客製化
+
+在需要根據不同情境客製化渲染邏輯時，`Render Props` 可以提供最大的彈性。以下範例展示如何為商品列表提供可客製化的價格顯示邏輯：
+
+```tsx
+import type { ReactNode } from 'react';
+
+type Item = {
+  name: string;
+  price: number;
+  discountRatio?: number;
+};
+
+type ProductListProps = {
+  items: Item[];
+  title: string;
+  renderPrice?: (item: Item) => ReactNode;
+};
+
+function ProductList({ items, title, renderPrice = ({ price }) => '$' + price }: ProductListProps) {
+  return (
+    <div>
+      <h3>{title}</h3>
+      {items.map((item, index) => (
+        <div key={index}>
+          <div>{item.name}</div>
+          <div>{renderPrice(item)}</div>
+          <hr />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+type DiscountProductListProps = Omit<ProductListProps, 'renderPrice'> & {
+  renderPrice: (item: Item) => ReactNode;
+};
+
+function DiscountProductList(props: DiscountProductListProps) {
+  return (
+    <ProductList
+      {...props}
+      renderPrice={({ price, discountRatio = 1 }) => (
+        <div>
+          <span style={{ textDecoration: 'line-through' }}>${price}</span>
+          <span> ${Math.round(price * discountRatio)}</span>
+        </div>
+      )}
+    />
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <ProductList
+        title="水果列表"
+        items={[
+          { name: '蘋果', price: 100 },
+          { name: '西瓜', price: 200 },
+        ]}
+      />
+      <br />
+      <br />
+      <DiscountProductList
+        title="特價水果列表"
+        items={[
+          { name: '橘子', price: 300, discountRatio: 0.7 },
+          { name: '香蕉', price: 400, discountRatio: 0.9 },
+          { name: '芭樂', price: 500, discountRatio: 0.5 },
+        ]}
+      />
+    </>
+  );
+}
+```
+
+## 使用指南與最佳實踐
+
+### 何時選擇 Render Props
+
+**適合使用的情境：**
+
+- 需要在多個地方復用相同邏輯，但 UI 呈現不同
+- 希望讓使用者完全控制渲染方式
+- 邏輯和 UI 需要解耦的場景
+- 需要將內部狀態暴露給外部控制
+
+**不適合使用的情境：**
+
+- 純邏輯處理，沒有 UI 相關需求（建議使用 `Custom Hooks`）
+- UI 結構高度不確定，變化太多（建議使用 `Compound Pattern`）
+- 簡單的組件組合（使用一般的 `props` 即可）
+
+### 開發最佳實踐
+
+- **合理抽象**：只在有明確客製化需求的地方使用 `Render Props`
+- **提供預設值**：為 `render function` 提供合理的預設實作
+- **避免過度巢狀**：超過 2-3 層時考慮重構或改用其他模式
+- **型別安全**：使用 TypeScript 明確定義 `render function` 的參數型別
+- **效能優化**：避免在每次渲染時創建新的 `render function`
+
+## 結語
+
+`Render Props` 是一個強大的 React Pattern，在 Hooks 時代雖然使用頻率降低，但在特定場景下仍然是最佳解決方案。它提供了高度的彈性和可重用性，特別適合需要客製化 UI 渲染邏輯的場景。
+
+掌握 `Render Props` 不僅能幫助我們更好地理解現有的 UI Library，也能在適當的時機選擇最合適的架構模式，寫出更優雅和可維護的程式碼。

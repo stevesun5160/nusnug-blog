@@ -46,14 +46,14 @@ const formattedDate = new Intl.DateTimeFormat('zh-TW', {
       </Pattern>
 
       <Box>
-        <BoxHeader class="text-sm font-medium! text-muted-foreground">
+        <BoxHeader class="text-sm font-bold! text-muted-foreground">
           {formattedDate} • {readTime}
         </BoxHeader>
 
         <Pattern className="screen-line-after" />
 
         <BoxHeader>
-          <BoxTitle className="text-2xl font-black! md:text-3xl"
+          <BoxTitle className="text-2xl font-bold! md:text-3xl"
             >{capitalizeFirstLetter(title)}</BoxTitle
           >
         </BoxHeader>

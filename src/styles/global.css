@@ -123,8 +123,8 @@
 
 html {
   @apply scroll-smooth;
-  font-family: Noto Sans TC;
-  font-weight: 300;
+  font-family: 'LXGW WenKai TC';
+  font-weight: 400;
 }
 
 body {
@@ -133,7 +133,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-pre {
+pre,
+code {
   font-family: Maple Mono;
   border: 0;
 }
